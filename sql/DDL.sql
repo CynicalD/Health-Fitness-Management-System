@@ -1,4 +1,4 @@
--- Drop tables if they already exist (for easy reset while developing)
+-- Drop tables if they already exist 
 DROP TABLE IF EXISTS class_registration;
 DROP TABLE IF EXISTS health_metric;
 DROP TABLE IF EXISTS fitness_class;
@@ -6,7 +6,7 @@ DROP TABLE IF EXISTS room;
 DROP TABLE IF EXISTS trainer;
 DROP TABLE IF EXISTS member;
 
--- Member table: stores gym members
+-- Member tabrle: stores gym members
 CREATE TABLE member (
     member_id      SERIAL PRIMARY KEY,
     first_name     VARCHAR(50) NOT NULL,
@@ -76,3 +76,40 @@ CREATE TABLE health_metric (
     CONSTRAINT fk_health_metric_member
         FOREIGN KEY (member_id) REFERENCES member(member_id)
 );
+
+-- =========================================
+-- VIEW: class_overview
+-- Shows each class with trainer, room, and current enrollment count
+-- =========================================
+CREATE OR REPLACE VIEW class_overview AS
+SELECT
+    fc.class_id,
+    fc.class_name,
+    fc.start_time,
+    fc.end_time,
+    fc.capacity,
+    t.first_name AS trainer_first_name,
+    t.last_name  AS trainer_last_name,
+    r.room_id,
+    r.capacity   AS room_capacity,
+    COUNT(cr.member_id) AS enrolled_count
+FROM fitness_class fc
+JOIN trainer t ON fc.trainer_id = t.trainer_id
+JOIN room r    ON fc.room_id = r.room_id
+LEFT JOIN class_registration cr
+    ON fc.class_id = cr.class_id
+GROUP BY
+    fc.class_id,
+    fc.class_name,
+    fc.start_time,
+    fc.end_time,
+    fc.capacity,
+    t.first_name,
+    t.last_name,
+    r.room_id,
+    r.capacity;
+
+-- INDEX: idx_member_email
+-- Speeds up lookups of members by email
+CREATE INDEX IF NOT EXISTS idx_member_email
+ON member (email);

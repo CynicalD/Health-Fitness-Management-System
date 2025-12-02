@@ -1,6 +1,6 @@
--- Sample data for gym_management
+-- Samle data for gym_management
 
--- Clear existing data (optional but useful while developing)
+-- Clear existing data if exsit
 DELETE FROM class_registration;
 DELETE FROM health_metric;
 DELETE FROM fitness_class;
@@ -12,19 +12,19 @@ DELETE FROM member;
 INSERT INTO member (first_name, last_name, email, phone, goal_description)
 VALUES
     ('John',  'Doe',      'john.doe@example.com',   '555-1111', 'Lose 5kg and improve cardio'),
-    ('Sarah', 'Lee',      'sarah.lee@example.com',  '555-2222', 'Build strength and muscle'),
-    ('Mike',  'Brown',    'mike.brown@example.com', '555-3333', 'Train for 10km run'),
-    ('Alice', 'Chen',     'alice.chen@example.com', '555-4444', 'General fitness'),
+    ('George ', 'Washington',      'goerge.washington@revolution.com',  '555-2222', 'Build strength and muscle'),
+    ('John A',  'Macdonald',    'johna.macdonald@independence.com', '555-3333', 'Train for marathon'),
+    ('Abraham', 'Lincoln',     'abraham.lincoln@civilwar.com', '555-4444', 'General fitness'),
     ('Bob',   'Martin',   'bob.martin@example.com', '555-5555', 'Improve flexibility');
 
 -- Insert trainers
 INSERT INTO trainer (first_name, last_name, email, phone, specialty)
 VALUES
     ('Laura',   'Smith',   'laura.smith@gym.com',   '555-6001', 'Strength Training'),
-    ('David',   'Wilson',  'david.wilson@gym.com',  '555-6002', 'Cardio & HIIT'),
-    ('Priya',   'Patel',   'priya.patel@gym.com',   '555-6003', 'Yoga & Mobility');
+    ('David',   'Dude',  'david.wilson@gym.com',  '555-6002', 'Cardio & HIIT'),
+    ('Sponge',   'Bob',   'sponge.bob@gym.com',   '555-6003', 'Yoga & Mobility');
 
--- Insert rooms
+-- insert rooms
 INSERT INTO room (capacity)
 VALUES
     (20),  -- room_id = 1

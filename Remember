@@ -1,0 +1,91 @@
+Chapter 1 -- OS Intro
+Interrupts -- what they are, stages of handling
+Kernel-vs-User modes -- what each can/cannot do and why
+Computer Architecture basics (device drivers, bus, DMA...)
+Multi-programming vs multi-processing
+Chapter 2 -- OS Structure
+Systems calls -- "trap", how system calls differ from interrupts
+OS architecture -- monolith vs layered vs micro-kernel (characteristic features of each, why good/bad)
+Linkers, loaders -- what they are (how they relate to memory management -- cross to Chapter 9)
+Chapter 3 -- Processes
+Process concept, state, life-cycle, process control block, context switch
+Fork-wait/join paradigm
+Inter-Process Communication (pipes, messaging)
+Chapter 4 -- Threads
+Threads, what they are, how they differ from Processes
+Software vs hardware threads,
+POSIX, user-vs-kernel threads (many-to-one, one-to-one, what happens to a process if one of its threads does X)
+Multi-core programming issues, parallelism types
+Chapter 5 -- Scheduling
+CPU Scheduling as a concept, CPU-I/O Burst Cycle
+Scheduler, preemptive vs non-preemptive, when and why scheduler intervenes
+Scheduling criteria (how to measure what's good what's bad and compare schedules)
+Scheduling algorithms (FIFO, SJF, SRTF, Priority, Multi-Level (Feedback) Queue Scheduling)
+Multi-processor scheduling (load balancing, global-vs-local, processor affinity)
+Real-time scheduling (RTS definition (idealistic), soft-vs-hard RTS, Rate Monotonic Scheduling, Earliest Deadline First, Proportional Share Scheduling)
+Chapter 6 -- Synchronization Tools
+Critical Section Problem (race condition, basic example, three solution requirements)
+Peterson's solution (flag-and-turn)
+Hardware support for CSP solutions (memory barriers, atomic hardware instructions)
+Mutex, Semaphore (blocking/non-blocking, and implementation issues)
+Chapter 7 -- Synchronization Example
+Producer Consumer Examples, Reader-(vs-Writer) priority
+Chapter 8 -- Deadlock
+Deadlock definition -- necessary conditions, and why/when they are not sufficient (i.e., do not guarantee deadlock)
+Deadlock Prevention -- methods and their limitations
+Deadlock Avoidance -- Banker's algorithm, you should be able to solve a problem when the data is incomplete (e.g., one of the Available is unknown)
+Deadlock Detection -- Similarity and difference with the Banker's Algorithm, you should be able to solve a problem when the data is incomplete (e.g., one of the Requests is unknown)
+Chapter 9 -- Memory Management
+Address binding, linker/loader issues (link from Chapter 2) 
+Basic operation of Segmentation
+Basic operation of Paging
+Structured Paging -- multi-level paging, hashed page tables, inverse page tables
+Chapter 10 Virtual Memory
+What is different between Virtual Memory vs Paging vs Swapping
+Extra "bits" -- valid, dirty, recency bit; and why sometimes we have more bits per concept (e.g., more than 1 recency bit).
+Page replacement algorithms 
+FIFO, Optimal, LRU, Second Chance, Clock; and remember that there are frequency of use based approaches
+Page buffering
+Allocation of frames
+Allocation algorithms (fixed, proportional, reclaiming page, thrashing + working set)
+Global vs local allocation
+"Speedups" -- page size effects, TLB reach, program structure
+Chapter 11 -- Mass Storage
+NVMs vs HDDs (how they work, limitations and quirks)
+HDD scheduling (FCFS, SCAN, C-SCAN)
+NVM scheduling (link to Chapter 14 FS Implementation)
+Chapter 12 -- Kernel I/O
+Kernel I/O responsibilities (buffering, caching, error handling, protection)  
+I/O Device features 
+Non-blocking vs Asynchronous I/O
+Memory-mapped I/O -- link-back to Chapter 10
+Interrupts and DMA -- link-back to Chapters 1,2
+Chapter 13 -- File System Interface
+File and directory concepts, File Control Block
+File Access -- HW vs Logical
+Directory structures
+Flat, tree, acyclic graph, general graph -- problems and treatments
+Hard vs soft links
+Chapter 14 -- FS Implementation
+FS layered structure
+Kernel (in memory) structures that support FS operations
+Mount-table, system-wide open files table, per-process open file table
+Directory implementation -- linear (+tree), hash,
+Block allocation methods -- notice the differentiation between management data and file data storage (inodes/FAT use separate disk space)
+Contiguous
+Linked (+ extents, FAT)
+Indexed -- general
+Unix/Linux (inode)
+Free space management
+Bitmap (can have several, e.g. one for inodes and one for data blocks)
+Linked list (+grouping+counting)
+FS Performance Enhancements
+Buffer-cache
+Free-behind and read ahead
+TRIM -- link back to Chapter 11
+Special Lecture -- Chapter 14 (on Recovery and WAFL) + Journaling File Systems (Three Easy Pieces, Chapter 43)
+FSCK
+WAFL
+Journaling and Meta Journaling
+Recommended Reading (no lecture slides): Chapter 15 (File System Internals) of the Operating System Concepts book. 
+Links together several concepts, discusses mounting in detail, introduces NFS and Virtual File System

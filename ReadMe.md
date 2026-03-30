@@ -77,7 +77,3 @@ python app/app.py
 ```
 
 You will see the role-based CLI menu. Choose a role and follow the prompts to test the operations.
-
-## Demo Video
-
-https://youtu.be/4YRx0NwwPxU

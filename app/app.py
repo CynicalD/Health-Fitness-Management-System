@@ -5,6 +5,7 @@ import psycopg2
 
 def get_connection():
 
+
     #Open a new connection to the gym_management database.
    
     return psycopg2.connect(dbname="gym_management")

@@ -6,6 +6,7 @@ DROP TABLE IF EXISTS room;
 DROP TABLE IF EXISTS trainer;
 DROP TABLE IF EXISTS member;
 
+
 -- Member tabrle: stores gym members
 CREATE TABLE member (
     member_id      SERIAL PRIMARY KEY,
